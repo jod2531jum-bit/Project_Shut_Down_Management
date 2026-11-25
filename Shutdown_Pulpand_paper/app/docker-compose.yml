@@ -1,0 +1,21 @@
+services:
+  shutdown:
+    build: .
+    image: shutdown-command-center
+    ports:
+      - "3001:3001"
+    volumes:
+      - shutdown-data:/data        # SQLite file lives here; back this volume up
+    environment:
+      # Open mode (no sign-in) is for local trials only. For real use set AUTH_MODE=entra and the ENTRA_* values (see docs/DEPLOYMENT.md).
+      AUTH_MODE: ${AUTH_MODE:-none}
+      ENTRA_TENANT_ID: ${ENTRA_TENANT_ID:-}
+      ENTRA_API_CLIENT_ID: ${ENTRA_API_CLIENT_ID:-}
+      ENTRA_SPA_CLIENT_ID: ${ENTRA_SPA_CLIENT_ID:-}
+      ENTRA_GROUP_IMPORTER: ${ENTRA_GROUP_IMPORTER:-}
+      ENTRA_GROUP_EDITOR: ${ENTRA_GROUP_EDITOR:-}
+      ENTRA_GROUP_VIEWER: ${ENTRA_GROUP_VIEWER:-}
+      TLS: ${TLS:-false}           # set true only when served over https (enables HSTS)
+    restart: unless-stopped
+volumes:
+  shutdown-data:

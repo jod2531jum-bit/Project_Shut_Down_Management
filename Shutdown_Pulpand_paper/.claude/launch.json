@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "web", "runtimeExecutable": "node", "runtimeArgs": ["app/apps/web/scripts/dev-e2e.mjs"], "port": 5183 },
+    { "name": "prod", "runtimeExecutable": "node", "runtimeArgs": ["--import", "file:///D:/Spec/PPPC/Shutdown_Pulpand_paper/app/node_modules/tsx/dist/esm/index.mjs", "app/apps/api/scripts/local-prod.mjs"], "port": 3012 }
+  ]
+}

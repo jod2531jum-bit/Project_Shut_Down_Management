@@ -1,0 +1,1 @@
+{ "name": "shutdown-command-center", "private": true, "workspaces": ["packages/*", "apps/*"] }
